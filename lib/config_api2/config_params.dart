@@ -13,6 +13,12 @@ class ConfigParams extends SimpleParameters {
     super.queryParams["age"] = age;
   }
 
+  String get gender => super.queryParams["gender"] ?? "";
+
+  set gender(String val) {
+    super.queryParams["gender"] = gender;
+  }
+
   String get weight => super.queryParams["weight"] ?? "";
 
   set weight(String val) {
@@ -21,7 +27,25 @@ class ConfigParams extends SimpleParameters {
 
   String get height => (super.queryParams["height"] ?? '0.0');
 
-  set height(String bmi) {
+  set height(String val) {
     super.queryParams["height"] = height;
+  }
+
+  String get neck => super.queryParams["neck"] ?? "";
+
+  set neck(String val) {
+    super.queryParams["neck"] = neck;
+  }
+
+  String get waist => super.queryParams["waist"] ?? "";
+
+  set waist(String val) {
+    super.queryParams["waist"] = waist;
+  }
+
+  String get hip => super.queryParams["hip"] ?? "";
+
+  set hip(String val) {
+    super.queryParams["hip"] = hip;
   }
 }

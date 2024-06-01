@@ -9,10 +9,10 @@ part of 'config_repo.dart';
 String _$ConfigRepoHash() => r'a24094d80f1e8eb1ac71c7f45a9b14bee711f153';
 
 /// See also [ConfigRepo].
-@ProviderFor(ConfigRepo)
-final ConfigRepoProvider =
+@ProviderFor(ConfigRepo2)
+final ConfigRepoProvider2 =
 Provider<RiverpodAPI<ConfigModel, ConfigParams>>.internal(
-  ConfigRepo,
+  ConfigRepo2,
   name: r'ConfigRepoProvider',
   debugGetCreateSourceHash:
   const bool.fromEnvironment('dart.vm.product') ? null : _$ConfigRepoHash,

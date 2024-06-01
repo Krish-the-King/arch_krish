@@ -16,6 +16,7 @@ RiverpodAPI<ConfigModel, ConfigParams> ConfigRepo(ConfigRepoRef ref) {
   final age = configParams.age;
   final weight = configParams.weight;
   final height = configParams.height;
+  print(age);
   return RiverpodAPI<ConfigModel, ConfigParams>(
     completeUrl: URLs.complete("/bmi?age={$age}&weight={$weight}&height={$height}"),
     factory: FactoryUtils.modelFromString(ConfigModel.fromJson,showLog: true),

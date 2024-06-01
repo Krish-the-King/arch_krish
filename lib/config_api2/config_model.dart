@@ -64,35 +64,59 @@ class Data {
 
 class Query {
   int? age;
+  String? gender;
   int? weight;
   int? height;
+  int? neck;
+  int? waist;
+  int? hip;
 
   Query({
     this.age,
+    this.gender,
     this.weight,
     this.height,
+    this.neck,
+    this.waist,
+    this.hip,
   });
 
   Query copyWith({
     int? age,
+    String? gender,
     int? weight,
     int? height,
+    int? neck,
+    int? waist,
+    int? hip,
   }) =>
       Query(
         age: age ?? this.age,
+        gender: gender ?? this.gender,
         weight: weight ?? this.weight,
         height: height ?? this.height,
+        neck: neck ?? this.neck,
+        waist: waist ?? this.waist,
+        hip: hip ?? this.hip
       );
 
   factory Query.fromJson(Map<String, dynamic> json) => Query(
     age: json["age"],
+    gender: json["gender"],
     weight: json["weight"],
     height: json["height"],
+    neck: json["neck"],
+    waist: json["waist"],
+    hip: json["hip"]
   );
 
   Map<String, dynamic> toJson() => {
     "age": age,
+    "gender": gender,
     "weight": weight,
     "height": height,
+    "neck": neck,
+    "waist": waist,
+    "hip": hip,
   };
 }

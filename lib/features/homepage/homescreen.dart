@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../config_api/config_repo.dart';
+import '../../config_api2/config_repo.dart';
 import '../../constants/colors.dart';
 import '../../constants/textstyles.dart';
 
@@ -468,7 +469,22 @@ class _homescreenState extends State<homescreen> {
                       convertRepo.params.height=ref.read(height).toString();
                       await convertRepo.execute();
                       convertRepo = ref.watch(ConfigRepoProvider);
-                      await homehttp().BFgetter(ref);
+
+
+                      var convertRepo2 = ref.watch(ConfigRepoProvider2);
+                      convertRepo2.params.headers =  {
+                        'X-RapidAPI-Key': '080f6c1ee2msh4a92d6cfe258b03p10115djsnc512a9eaacd2',
+                        'X-RapidAPI-Host': 'fitness-calculator.p.rapidapi.com'
+                      };
+                      convertRepo2.params.age=ref.read(age).toString();
+                      convertRepo2.params.gender=(ref.read(toggleProvider)==0?'male':'female');
+                      convertRepo2.params.weight=ref.read(weight).toString();
+                      convertRepo2.params.height=ref.read(height).toString();
+                      convertRepo2.params.neck=ref.read(neck).toString();
+                      convertRepo2.params.waist=ref.read(waist).toString();
+                      convertRepo2.params.hip=ref.read(hip).toString();
+                      await convertRepo2.execute();
+                      convertRepo2 = ref.watch(ConfigRepoProvider2);
                       context.pushReplacement("/result");
                     },
                     child: Text("CALCULATE",style: TextStyle(
