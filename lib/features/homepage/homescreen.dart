@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../config_api/config_repo.dart';
 import '../../constants/colors.dart';
 import '../../constants/textstyles.dart';
 
@@ -457,7 +458,16 @@ class _homescreenState extends State<homescreen> {
                 builder: (_,WidgetRef ref,__){
                   return TextButton(
                     onPressed: () async {
-                      await homehttp().BMIgetter(ref);
+                      var convertRepo = ref.watch(ConfigRepoProvider);
+                      convertRepo.params.headers =  {
+                        'X-RapidAPI-Key': '080f6c1ee2msh4a92d6cfe258b03p10115djsnc512a9eaacd2',
+                        'X-RapidAPI-Host': 'fitness-calculator.p.rapidapi.com'
+                      };
+                      convertRepo.params.age=ref.read(age).toString();
+                      convertRepo.params.weight=ref.read(weight).toString();
+                      convertRepo.params.height=ref.read(height).toString();
+                      await convertRepo.execute();
+                      convertRepo = ref.watch(ConfigRepoProvider);
                       await homehttp().BFgetter(ref);
                       context.pushReplacement("/result");
                     },
